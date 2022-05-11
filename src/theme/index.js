@@ -29,6 +29,16 @@ const customTheme = createTheme({
         },
       },
     },
+
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          borderRadius: "10px",
+          paddingLeft: "20px",
+          paddingRight: "20px",
+        },
+      },
+    },
   },
 
   /**

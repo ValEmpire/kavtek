@@ -5,7 +5,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { Box, TableSortLabel, Typography } from "@mui/material";
+import { Box, TableSortLabel, Tooltip, Typography } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
@@ -26,14 +26,14 @@ export default function BasicTable() {
             <TableHead>
               <TableRow>
                 <TableCell>
-                  <TableSortLabel active IconComponent={KeyboardArrowDownIcon}>
+                  <TableSortLabel IconComponent={KeyboardArrowDownIcon}>
                     <Typography variant="body2" color="text.secondary">
                       Name
                     </Typography>
                   </TableSortLabel>
                 </TableCell>
                 <TableCell>
-                  <TableSortLabel active IconComponent={KeyboardArrowUpIcon}>
+                  <TableSortLabel IconComponent={KeyboardArrowUpIcon}>
                     <Typography variant="body2" color="text.secondary">
                       DOB
                     </Typography>
@@ -63,7 +63,13 @@ export default function BasicTable() {
                     <Typography variant="dob">{row.dob}</Typography>
                   </TableCell>
 
-                  <TableCell>{row.email}</TableCell>
+                  <TableCell>
+                    <Tooltip title={row.email} placement="top">
+                      <Typography display={"inline"} variant="body2">
+                        {row.email}
+                      </Typography>
+                    </Tooltip>
+                  </TableCell>
                   <TableCell>{row.gender}</TableCell>
                 </TableRow>
               ))}
