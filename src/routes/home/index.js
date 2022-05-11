@@ -16,6 +16,7 @@ function createData(name, dob, email, gender) {
 
 const rows = [
   createData("Carter Siphron", "12 Jul, 2021", "palma_arcivafdsafsdafdsafsdl@yahoo.com", "Male"),
+  createData("Carter Siphron", "12 Jul, 2021", "palma_arcivafdsafsdafdsafsdl@yahoo.com", "Male"),
 ];
 
 export default function BasicTable() {
@@ -30,26 +31,26 @@ export default function BasicTable() {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell style={{ width: "100px" }}>
+                <TableCell className="table-cell">
                   <TableSortLabel active IconComponent={KeyboardArrowUpIcon}>
                     <Typography sx={{ mt: "-4px" }} variant="body2" color="text.secondary">
                       Name
                     </Typography>
                   </TableSortLabel>
                 </TableCell>
-                <TableCell style={{ width: "100px" }}>
+                <TableCell className="table-cell">
                   <TableSortLabel active IconComponent={KeyboardArrowUpIcon}>
                     <Typography sx={{ mt: "-4px" }} variant="body2" color="text.secondary">
                       DOB
                     </Typography>
                   </TableSortLabel>
                 </TableCell>
-                <TableCell style={{ width: "100px" }}>
+                <TableCell className="table-cell">
                   <Typography variant="body2" color="text.secondary">
                     Email
                   </Typography>
                 </TableCell>
-                <TableCell style={{ width: "45%" }}>
+                <TableCell sx={{ width: "45%" }}>
                   <Typography variant="body2" color="text.secondary">
                     Gender
                   </Typography>
@@ -59,7 +60,7 @@ export default function BasicTable() {
             <TableBody>
               {rows.map((row) => (
                 <TableRow key={row.name} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-                  <TableCell style={{ width: "100px" }}>
+                  <TableCell className="table-cell">
                     <LinkMui
                       underline="none"
                       variant="body2"
@@ -71,20 +72,20 @@ export default function BasicTable() {
                       {row.name}
                     </LinkMui>
                   </TableCell>
-                  <TableCell style={{ width: "100px" }}>
+                  <TableCell className="table-cell">
                     <Typography variant="dob">{row.dob}</Typography>
                   </TableCell>
 
-                  <TableCell style={{ width: "100px" }}>
+                  <TableCell className="table-cell">
                     <Tooltip title={row.email} placement="top">
-                      <Box style={{ width: "100px" }}>
+                      <Box className="table-cell">
                         <Typography variant="body2" noWrap={true}>
                           {row.email}
                         </Typography>
                       </Box>
                     </Tooltip>
                   </TableCell>
-                  <TableCell style={{ width: "45%" }}>{row.gender}</TableCell>
+                  <TableCell sx={{ width: "45%" }}>{row.gender}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
