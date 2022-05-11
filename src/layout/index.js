@@ -5,7 +5,7 @@ const Layout = (props) => {
   return (
     <Grid container>
       <Grid item xs={12}>
-        <Container maxWidth="lg" disableGutters>
+        <Container maxWidth="md" disableGutters>
           {props.children}
         </Container>
       </Grid>
