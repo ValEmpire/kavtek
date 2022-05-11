@@ -1,7 +1,9 @@
+import { Provider } from "react-redux";
+import { createStore } from "./redux/store";
 import "./App.css";
 
 function App() {
-  return <h1>Init</h1>;
+  return <Provider store={createStore()}></Provider>;
 }
 
 export default App;
