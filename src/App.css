@@ -3,7 +3,10 @@
   border-radius: 13px;
 }
 
-.table-cell {
-  width: 100px;
+.p-20 {
   padding: 20px;
+}
+
+.w-100 {
+  width: 100px;
 }

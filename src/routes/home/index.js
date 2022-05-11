@@ -16,13 +16,13 @@ function createData(name, dob, email, gender) {
 
 const rows = [
   createData("Carter Siphron", "12 Jul, 2021", "palma_arcivafdsafsdafdsafsdl@yahoo.com", "Male"),
-  createData("Carter Siphron", "12 Jul, 2021", "palma_arcivafdsafsdafdsafsdl@yahoo.com", "Male"),
+  createData("Carter Siphron", "12 Jul, 2021", "palma_arcil@yahoo.com", "Male"),
 ];
 
 export default function BasicTable() {
   return (
     <>
-      <Box pt={2} pb={3}>
+      <Box pt={3} pb={3}>
         <Typography variant="subtitle1">Users</Typography>
       </Box>
 
@@ -31,21 +31,21 @@ export default function BasicTable() {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell className="table-cell">
+                <TableCell className="w-100 p-20">
                   <TableSortLabel active IconComponent={KeyboardArrowUpIcon}>
                     <Typography sx={{ mt: "-4px" }} variant="body2" color="text.secondary">
                       Name
                     </Typography>
                   </TableSortLabel>
                 </TableCell>
-                <TableCell className="table-cell">
+                <TableCell className="w-100 p-20">
                   <TableSortLabel active IconComponent={KeyboardArrowUpIcon}>
                     <Typography sx={{ mt: "-4px" }} variant="body2" color="text.secondary">
                       DOB
                     </Typography>
                   </TableSortLabel>
                 </TableCell>
-                <TableCell className="table-cell">
+                <TableCell className="w-100 p-20">
                   <Typography variant="body2" color="text.secondary">
                     Email
                   </Typography>
@@ -60,7 +60,7 @@ export default function BasicTable() {
             <TableBody>
               {rows.map((row) => (
                 <TableRow key={row.name} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-                  <TableCell className="table-cell">
+                  <TableCell className="w-100 p-20">
                     <LinkMui
                       underline="none"
                       variant="body2"
@@ -72,13 +72,13 @@ export default function BasicTable() {
                       {row.name}
                     </LinkMui>
                   </TableCell>
-                  <TableCell className="table-cell">
+                  <TableCell className="w-100 p-20">
                     <Typography variant="dob">{row.dob}</Typography>
                   </TableCell>
 
-                  <TableCell className="table-cell">
+                  <TableCell className="w-100 p-20">
                     <Tooltip title={row.email} placement="top">
-                      <Box className="table-cell">
+                      <Box className="w-100">
                         <Typography variant="body2" noWrap={true}>
                           {row.email}
                         </Typography>
