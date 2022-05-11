@@ -12,6 +12,10 @@ const customTheme = createTheme({
       main: "#5A98FE",
       contrastText: "#FFFFFF",
     },
+
+    secondary: {
+      main: "#979797",
+    },
   },
 
   /**
@@ -61,13 +65,18 @@ const customTheme = createTheme({
     },
 
     body1: {
+      fontSize: "10px",
+      lineHeight: "14px",
+    },
+
+    body2: {
       fontSize: "14px",
       lineHeight: "19px",
     },
 
-    body2: {
-      fontSize: "10px",
-      lineHeight: "14px",
+    dob: {
+      fontSize: "16px",
+      lineHeight: "22px",
     },
   },
 });
