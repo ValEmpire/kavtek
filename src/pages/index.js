@@ -1,3 +1,12 @@
-import UsersPage from "./users";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default UsersPage;
+const IndexPage = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/users");
+  }, [navigate]);
+};
+
+export default IndexPage;

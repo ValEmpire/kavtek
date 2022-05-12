@@ -11,11 +11,14 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../redux/actions/user.action";
+import moment from "moment";
 
 const UsersRoute = () => {
   const dispatch = useDispatch();
 
   const { users } = useSelector((state) => state.user);
+
+  console.log(users);
 
   useEffect(() => {
     dispatch(getUsers());
@@ -70,7 +73,7 @@ const UsersRoute = () => {
                         underline="none"
                         variant="body3"
                         component={Link}
-                        to={user.id}
+                        to={`details?email=${user.email}`}
                         fontWeight={700}
                         color="primary"
                       >
@@ -78,7 +81,9 @@ const UsersRoute = () => {
                       </LinkMui>
                     </TableCell>
                     <TableCell className="w-100 p-20">
-                      <Typography variant="dob">{user.dob.date}</Typography>
+                      <Typography variant="dob">
+                        {moment(user.dob.date).format("e MMM, YYYY")}
+                      </Typography>
                     </TableCell>
 
                     <TableCell className="w-100 p-20">
