@@ -39,25 +39,25 @@ const UsersRoute = () => {
               <TableRow>
                 <TableCell className="w-100 p-20">
                   <TableSortLabel active IconComponent={KeyboardArrowUpIcon}>
-                    <Typography sx={{ mt: "-4px" }} variant="body3" color="text.secondary">
+                    <Typography sx={{ mt: "-4px" }} variant="body2" color="text.secondary">
                       Name
                     </Typography>
                   </TableSortLabel>
                 </TableCell>
                 <TableCell className="w-100 p-20">
                   <TableSortLabel active IconComponent={KeyboardArrowUpIcon}>
-                    <Typography sx={{ mt: "-4px" }} variant="body3" color="text.secondary">
+                    <Typography sx={{ mt: "-4px" }} variant="body2" color="text.secondary">
                       DOB
                     </Typography>
                   </TableSortLabel>
                 </TableCell>
                 <TableCell className="p-20">
-                  <Typography variant="body3" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary">
                     Email
                   </Typography>
                 </TableCell>
                 <TableCell sx={{ width: "45%" }}>
-                  <Typography variant="body3" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary">
                     Gender
                   </Typography>
                 </TableCell>
@@ -73,7 +73,7 @@ const UsersRoute = () => {
                     <TableCell className="p-20">
                       <LinkMui
                         underline="none"
-                        variant="body3"
+                        variant="body2"
                         component={Link}
                         to={`details?email=${user.email}`}
                         fontWeight={700}
@@ -91,14 +91,14 @@ const UsersRoute = () => {
                     <TableCell className="p-20">
                       <Tooltip title={user.email} placement="top">
                         <Box>
-                          <Typography display={"block"} variant="body3" noWrap>
+                          <Typography display={"block"} variant="body2" noWrap>
                             {truncateEmail(user.email)}
                           </Typography>
                         </Box>
                       </Tooltip>
                     </TableCell>
                     <TableCell>
-                      <Typography textTransform={"capitalize"} variant="body3">
+                      <Typography textTransform={"capitalize"} variant="body2">
                         {user.gender}
                       </Typography>
                     </TableCell>

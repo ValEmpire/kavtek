@@ -5,7 +5,7 @@ import Layout from "../../../layout";
 const UserDetails = () => {
   return (
     <Layout>
-      <UserDetailsRoute />;
+      <UserDetailsRoute />
     </Layout>
   );
 };

@@ -39,6 +39,27 @@ const customTheme = createTheme({
         },
       },
     },
+
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          border: `1px solid #000000`,
+          borderRadius: `4px`,
+        },
+      },
+    },
+
+    MuiStepIcon: {
+      styleOverrides: {
+        text: {
+          fontSize: "12px",
+        },
+        root: {
+          width: "30px",
+          height: "30px",
+        },
+      },
+    },
   },
 
   /**
@@ -75,17 +96,11 @@ const customTheme = createTheme({
     },
 
     body1: {
-      fontSize: "10px",
-      lineHeight: "14px",
-    },
-
-    body2: {
       fontSize: "12px",
-      fontColor: "#D9D9D9",
       lineHeight: "16px",
     },
 
-    body3: {
+    body2: {
       fontSize: "14px",
       lineHeight: "19px",
     },

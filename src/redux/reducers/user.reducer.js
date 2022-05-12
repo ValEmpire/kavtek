@@ -1,18 +1,20 @@
-import { SET_USERS, SET_USER_DETAILS } from "../../const";
+import { SET_USERS, SET_USER_DETAILS, UPDATE_ACTIVE_USER } from "../../const";
+import moment from "moment";
 
 export const initialState = {
   users: null,
   activeUserDetails: {
-    name: null,
-    dob: null,
-    email: null,
-    gender: null,
-    address: null,
-    city: null,
-    state: null,
-    postalCode: null,
-    country: null,
-    profilePicture: null,
+    firstName: "",
+    lastName: "",
+    dob: "",
+    email: "",
+    gender: "",
+    address: "",
+    city: "",
+    state: "",
+    postalCode: "",
+    country: "",
+    picture: "",
   },
 };
 
@@ -27,13 +29,41 @@ export const user = (state = initialState, action) => {
       };
 
     case SET_USER_DETAILS:
-      const { userId } = action.payload;
+      const email = action.payload;
 
-      const activeUserDetails = state.users.find((user) => user.id === userId);
+      const userByEmail = state.users.find((user) => user.email === email);
+
+      const { name, dob, gender, location, picture } = userByEmail;
+
+      const activeUserDetails = {
+        firstName: name?.first,
+        lastName: name?.last,
+        dob: moment(dob?.date).format("YYYY-MM-DD"),
+        email,
+        gender,
+        address: `${location?.street?.number} ${location?.street?.name}`,
+        city: location?.city,
+        state: location?.state,
+        postalCode: location?.postcode,
+        country: location?.country,
+        picture: picture?.thumbnail,
+      };
 
       return {
         ...state,
         activeUserDetails,
+      };
+
+    case UPDATE_ACTIVE_USER:
+      const { value } = action.payload;
+      const key = action.payload.name;
+
+      return {
+        ...state,
+        activeUserDetails: {
+          ...state.activeUserDetails,
+          [key]: value,
+        },
       };
 
     default:
