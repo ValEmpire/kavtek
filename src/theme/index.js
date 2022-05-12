@@ -39,24 +39,6 @@ const customTheme = createTheme({
         },
       },
     },
-
-    MuiTextField: {
-      styleOverrides: {
-        root: {
-          fontSize: "12px",
-          lineHeight: "16px",
-        },
-      },
-    },
-
-    MuiFormHelperText: {
-      styleOverrides: {
-        root: {
-          fontSize: "12px",
-          lineHeight: "16px",
-        },
-      },
-    },
   },
 
   /**

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from "react";
-import { Box, Grid, TextField, Typography } from "@mui/material";
+import { Box, Grid, InputLabel, TextField, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers, getUserById } from "../../../redux/actions/user.action";
 import { useParams } from "react-router-dom";
@@ -23,17 +23,24 @@ const UserDetailsRoute = () => {
 
   return (
     <Box className="box-container">
-      <Typography variant="subtitle1">Client Details</Typography>
-      <Grid container>
-        <Grid item sm={6} xs={12}>
-          <TextField name="firstName" />
-          <TextField name="lastName" />
-          <TextField name="email" />
-          <TextField type={"date"} name="email" />
-        </Grid>
-        <Grid item>
-          <TextField name="street" />
-          <TextField name="street" />
+      <Box textAlign={"center"}>
+        <Typography variant="subtitle1">Client Details</Typography>
+      </Box>
+      <Grid container justifyContent="center">
+        <Grid item xs={10}>
+          <Grid container spacing={3}>
+            <Grid item sm={6} xs={12}>
+              <InputLabel disabled>First Name</InputLabel>
+              <TextField fullWidth name="firstName" />
+              <TextField fullWidth name="lastName" />
+              <TextField fullWidth name="email" />
+              <TextField fullWidth type={"date"} name="email" />
+            </Grid>
+            <Grid item sm={6} xs={12}>
+              <TextField fullWidth name="street" />
+              <TextField fullWidth name="street" />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Box>

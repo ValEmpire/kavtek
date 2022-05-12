@@ -18,11 +18,13 @@ const UsersRoute = () => {
 
   const { users } = useSelector((state) => state.user);
 
-  console.log(users);
-
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
+
+  const truncateEmail = (email) => {
+    return email.substr(0, email.indexOf("@") + 1) + "...";
+  };
 
   return (
     <>
@@ -49,7 +51,7 @@ const UsersRoute = () => {
                     </Typography>
                   </TableSortLabel>
                 </TableCell>
-                <TableCell className="w-100 p-20">
+                <TableCell className="p-20">
                   <Typography variant="body3" color="text.secondary">
                     Email
                   </Typography>
@@ -68,7 +70,7 @@ const UsersRoute = () => {
                     key={user.email}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    <TableCell className="w-100 p-20">
+                    <TableCell className="p-20">
                       <LinkMui
                         underline="none"
                         variant="body3"
@@ -80,22 +82,26 @@ const UsersRoute = () => {
                         {`${user?.name?.first}  ${user?.name?.last}`}
                       </LinkMui>
                     </TableCell>
-                    <TableCell className="w-100 p-20">
+                    <TableCell className="p-20">
                       <Typography variant="dob">
                         {moment(user.dob.date).format("e MMM, YYYY")}
                       </Typography>
                     </TableCell>
 
-                    <TableCell className="w-100 p-20">
+                    <TableCell className="p-20">
                       <Tooltip title={user.email} placement="top">
-                        <Box className="w-100">
+                        <Box>
                           <Typography display={"block"} variant="body3" noWrap>
-                            {user.email}
+                            {truncateEmail(user.email)}
                           </Typography>
                         </Box>
                       </Tooltip>
                     </TableCell>
-                    <TableCell sx={{ width: "45%" }}>{user.gender}</TableCell>
+                    <TableCell>
+                      <Typography textTransform={"capitalize"} variant="body3">
+                        {user.gender}
+                      </Typography>
+                    </TableCell>
                   </TableRow>
                 ))}
             </TableBody>
