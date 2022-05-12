@@ -1,4 +1,4 @@
-import { SET_USER } from "../../const";
+import { SET_USERS, SET_USER_DETAILS } from "../../const";
 import axios from "axios";
 
 const getUsers = () => async (dispatch) => {
@@ -10,10 +10,19 @@ const getUsers = () => async (dispatch) => {
     const users = res.data.results;
 
     return dispatch({
-      type: SET_USER,
+      type: SET_USERS,
       payload: users,
     });
   } catch (err) {}
 };
 
-export { getUsers };
+const getUserById = (userId) => async (dispatch) => {
+  try {
+    return dispatch({
+      type: SET_USER_DETAILS,
+      payload: userId,
+    });
+  } catch (err) {}
+};
+
+export { getUsers, getUserById };

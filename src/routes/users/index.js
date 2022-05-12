@@ -27,68 +27,72 @@ const UsersRoute = () => {
         <Typography variant="subtitle1">Users</Typography>
       </Box>
 
-      <Box p={2} className="table-container">
+      <Box p={2} className="box-container">
         <TableContainer>
           <Table>
             <TableHead>
               <TableRow>
                 <TableCell className="w-100 p-20">
                   <TableSortLabel active IconComponent={KeyboardArrowUpIcon}>
-                    <Typography sx={{ mt: "-4px" }} variant="body2" color="text.secondary">
+                    <Typography sx={{ mt: "-4px" }} variant="body3" color="text.secondary">
                       Name
                     </Typography>
                   </TableSortLabel>
                 </TableCell>
                 <TableCell className="w-100 p-20">
                   <TableSortLabel active IconComponent={KeyboardArrowUpIcon}>
-                    <Typography sx={{ mt: "-4px" }} variant="body2" color="text.secondary">
+                    <Typography sx={{ mt: "-4px" }} variant="body3" color="text.secondary">
                       DOB
                     </Typography>
                   </TableSortLabel>
                 </TableCell>
                 <TableCell className="w-100 p-20">
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body3" color="text.secondary">
                     Email
                   </Typography>
                 </TableCell>
                 <TableCell sx={{ width: "45%" }}>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body3" color="text.secondary">
                     Gender
                   </Typography>
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {users.map((user) => (
-                <TableRow key={user.id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-                  <TableCell className="w-100 p-20">
-                    <LinkMui
-                      underline="none"
-                      variant="body2"
-                      component={Link}
-                      to={user.id}
-                      fontWeight={700}
-                      color="primary"
-                    >
-                      {user.name}
-                    </LinkMui>
-                  </TableCell>
-                  <TableCell className="w-100 p-20">
-                    <Typography variant="dob">{user.dob}</Typography>
-                  </TableCell>
+              {users &&
+                users.map((user) => (
+                  <TableRow
+                    key={user.email}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell className="w-100 p-20">
+                      <LinkMui
+                        underline="none"
+                        variant="body3"
+                        component={Link}
+                        to={user.id}
+                        fontWeight={700}
+                        color="primary"
+                      >
+                        {`${user?.name?.first}  ${user?.name?.last}`}
+                      </LinkMui>
+                    </TableCell>
+                    <TableCell className="w-100 p-20">
+                      <Typography variant="dob">{user.dob.date}</Typography>
+                    </TableCell>
 
-                  <TableCell className="w-100 p-20">
-                    <Tooltip title={user.email} placement="top">
-                      <Box className="w-100">
-                        <Typography variant="body2" noWrap={true}>
-                          {user.email}
-                        </Typography>
-                      </Box>
-                    </Tooltip>
-                  </TableCell>
-                  <TableCell sx={{ width: "45%" }}>{row.gender}</TableCell>
-                </TableRow>
-              ))}
+                    <TableCell className="w-100 p-20">
+                      <Tooltip title={user.email} placement="top">
+                        <Box className="w-100">
+                          <Typography display={"block"} variant="body3" noWrap>
+                            {user.email}
+                          </Typography>
+                        </Box>
+                      </Tooltip>
+                    </TableCell>
+                    <TableCell sx={{ width: "45%" }}>{user.gender}</TableCell>
+                  </TableRow>
+                ))}
             </TableBody>
           </Table>
         </TableContainer>
