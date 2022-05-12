@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,17 +9,18 @@ import { Box, TableSortLabel, Link as LinkMui, Tooltip, Typography } from "@mui/
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Link } from "react-router-dom";
-
-function createData(name, dob, email, gender) {
-  return { name, dob, email, gender };
-}
-
-const rows = [
-  createData("Carter Siphron", "12 Jul, 2021", "palma_arcivafdsafsdafdsafsdl@yahoo.com", "Male"),
-  createData("Carter Siphron", "12 Jul, 2021", "palma_arcil@yahoo.com", "Male"),
-];
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from "../../redux/actions/user.action";
 
 export default function BasicTable() {
+  const dispatch = useDispatch();
+
+  const { users } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+
   return (
     <>
       <Box pt={3} pb={3}>
@@ -58,8 +59,8 @@ export default function BasicTable() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
-                <TableRow key={row.name} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+              {users.map((row) => (
+                <TableRow key={row.id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                   <TableCell className="w-100 p-20">
                     <LinkMui
                       underline="none"

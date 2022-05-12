@@ -3,9 +3,16 @@ import axios from "axios";
 
 const getUsers = () => async (dispatch) => {
   try {
-    const res = await axios.get("https://randomuser.me/api/?results=15");
+    const endPoint = `https://randomuser.me/api/?results=15`;
 
-    console.log(res);
+    const res = await axios.get(endPoint);
+
+    const users = res.data.results;
+
+    return dispatch({
+      type: SET_USER,
+      payload: users,
+    });
   } catch (err) {}
 };
 
