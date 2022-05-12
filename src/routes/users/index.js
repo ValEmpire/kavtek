@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../redux/actions/user.action";
 
-export default function BasicTable() {
+const UsersRoute = () => {
   const dispatch = useDispatch();
 
   const { users } = useSelector((state) => state.user);
@@ -95,4 +95,6 @@ export default function BasicTable() {
       </Box>
     </>
   );
-}
+};
+
+export default UsersRoute;

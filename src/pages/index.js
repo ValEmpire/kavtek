@@ -1,3 +1,3 @@
-import HomePage from "./Home.page";
+import UsersPage from "./Users.page";
 
-export default HomePage;
+export default UsersPage;
