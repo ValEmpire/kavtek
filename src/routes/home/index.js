@@ -59,29 +59,29 @@ export default function BasicTable() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {users.map((row) => (
-                <TableRow key={row.id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+              {users.map((user) => (
+                <TableRow key={user.id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                   <TableCell className="w-100 p-20">
                     <LinkMui
                       underline="none"
                       variant="body2"
                       component={Link}
-                      to="nameId"
+                      to={user.id}
                       fontWeight={700}
                       color="primary"
                     >
-                      {row.name}
+                      {user.name}
                     </LinkMui>
                   </TableCell>
                   <TableCell className="w-100 p-20">
-                    <Typography variant="dob">{row.dob}</Typography>
+                    <Typography variant="dob">{user.dob}</Typography>
                   </TableCell>
 
                   <TableCell className="w-100 p-20">
-                    <Tooltip title={row.email} placement="top">
+                    <Tooltip title={user.email} placement="top">
                       <Box className="w-100">
                         <Typography variant="body2" noWrap={true}>
-                          {row.email}
+                          {user.email}
                         </Typography>
                       </Box>
                     </Tooltip>
