@@ -28,10 +28,15 @@ export const useUserDetails = () => {
   const email = query.get("email");
 
   const handleUserDetails = useCallback(() => {
+    // if users is null means users did not click the name
     if (!users) return navigate("/");
 
+    // if activeUserDetails is present just return
+    if (activeUserDetails.email) return;
+
+    // otherwise setActiveUser
     dispatch(getUserByEmail(email));
-  }, [dispatch, email, users, navigate]);
+  }, [dispatch, email, activeUserDetails.email, users, navigate]);
 
   const { firstName, lastName, dob, gender, address, city, state, postalCode, country, picture } =
     activeUserDetails;

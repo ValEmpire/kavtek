@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Typography } from "@mui/material";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const SuccessRoute = () => {
+  const { activeUserDetails } = useSelector((state) => state.user);
+
+  const navigate = useNavigate();
+
+  // This will protect user from going here without submitting the real form
+  useEffect(() => {
+    if (!activeUserDetails.email) navigate("/");
+  }, [activeUserDetails.email, navigate]);
+
   return (
     <>
       <Box pt={3} pb={3} />

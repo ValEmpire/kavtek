@@ -3,9 +3,14 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import { useUserDetails } from "./userDetailsHooks";
 import moment from "moment";
 import Confirm from "./Confirm";
+import { useSelector } from "react-redux";
 
 const UserReview = () => {
   const {
+    handleBack,
+    handleModal,
+    openModal,
+    handleSuccess,
     firstName,
     lastName,
     dob,
@@ -17,10 +22,6 @@ const UserReview = () => {
     country,
     email,
     picture,
-    handleBack,
-    handleModal,
-    openModal,
-    handleSuccess,
   } = useUserDetails();
 
   return (

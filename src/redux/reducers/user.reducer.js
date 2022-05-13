@@ -1,4 +1,4 @@
-import { SET_USERS, SET_USER_DETAILS, UPDATE_ACTIVE_USER } from "../../const";
+import { RESET_ACTIVE_USER, SET_USERS, SET_USER_DETAILS, UPDATE_ACTIVE_USER } from "../../const";
 import moment from "moment";
 
 export const initialState = {
@@ -63,6 +63,14 @@ export const user = (state = initialState, action) => {
         activeUserDetails: {
           ...state.activeUserDetails,
           [key]: value,
+        },
+      };
+
+    case RESET_ACTIVE_USER:
+      return {
+        ...state,
+        activeUserDetails: {
+          ...state.activeUserDetails,
         },
       };
 

@@ -84,7 +84,7 @@ const UsersRoute = () => {
                     </TableCell>
                     <TableCell className="p-20">
                       <Typography variant="dob">
-                        {moment(user.dob.date).format("e MMM, YYYY")}
+                        {moment(user.dob.date).format("DD MMM, YYYY")}
                       </Typography>
                     </TableCell>
 

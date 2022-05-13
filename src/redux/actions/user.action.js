@@ -1,4 +1,4 @@
-import { SET_USERS, SET_USER_DETAILS, UPDATE_ACTIVE_USER } from "../../const";
+import { RESET_ACTIVE_USER, SET_USERS, SET_USER_DETAILS, UPDATE_ACTIVE_USER } from "../../const";
 import axios from "axios";
 
 const getUsers = () => async (dispatch) => {
@@ -17,6 +17,8 @@ const getUsers = () => async (dispatch) => {
 };
 
 const getUserByEmail = (email) => async (dispatch) => {
+  console.log("getting user");
+
   try {
     return dispatch({
       type: SET_USER_DETAILS,
@@ -31,4 +33,11 @@ const updateActiveUser = (detail) => (dispatch) => {
     payload: detail,
   });
 };
-export { getUsers, getUserByEmail, updateActiveUser };
+
+const resetActiveUser = () => (dispatch) => {
+  return dispatch({
+    type: RESET_ACTIVE_USER,
+  });
+};
+
+export { getUsers, resetActiveUser, getUserByEmail, updateActiveUser };

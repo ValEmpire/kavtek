@@ -4,6 +4,7 @@ import UserReview from "./UserReview";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Grid, Step, StepLabel, Stepper } from "@mui/material";
 import { setActiveStep } from "../../../redux/actions/step.action";
+import { resetActiveUser } from "../../../redux/actions/user.action";
 
 const UserDetailsRoute = () => {
   const { activeStep } = useSelector((state) => state.step);
@@ -11,10 +12,13 @@ const UserDetailsRoute = () => {
   const dispatch = useDispatch();
 
   // this will make sure that active step is always by default
+  // and will reset activeUserDetails when component did unmount
   // when user clicks browser back button
   useEffect(() => {
     return () => {
       dispatch(setActiveStep(0));
+
+      dispatch(resetActiveUser());
     };
   }, [dispatch]);
 
