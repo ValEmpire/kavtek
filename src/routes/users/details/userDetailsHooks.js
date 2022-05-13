@@ -17,6 +17,8 @@ export const useUserDetails = () => {
 
   const [fullAddress, setFullAddress] = useState(false);
 
+  const [openModal, setOpenModal] = useState(false);
+
   const { activeUserDetails, users } = useSelector((state) => state.user) ?? {};
 
   const { activeStep } = useSelector((state) => state.step);
@@ -60,6 +62,18 @@ export const useUserDetails = () => {
     dispatch(setActiveStep(activeStep + 1));
   };
 
+  const handleBack = () => {
+    dispatch(setActiveStep(activeStep - 1));
+  };
+
+  const handleModal = () => {
+    setOpenModal(!openModal);
+  };
+
+  const handleSuccess = () => {
+    navigate("/success");
+  };
+
   return {
     firstName,
     lastName,
@@ -77,5 +91,10 @@ export const useUserDetails = () => {
     handleNext,
     handleAddress,
     handleUserInput,
+    activeStep,
+    handleBack,
+    openModal,
+    handleModal,
+    handleSuccess,
   };
 };

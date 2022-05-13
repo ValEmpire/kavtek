@@ -46,7 +46,7 @@ export const user = (state = initialState, action) => {
         state: location?.state,
         postalCode: location?.postcode,
         country: location?.country,
-        picture: picture?.thumbnail,
+        picture: picture?.large,
       };
 
       return {

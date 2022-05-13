@@ -27,6 +27,9 @@ const customTheme = createTheme({
         root: {
           textTransform: "none",
         },
+        text: {
+          color: "#C9C9C9",
+        },
       },
     },
 
@@ -108,6 +111,10 @@ const customTheme = createTheme({
     dob: {
       fontSize: "16px",
       lineHeight: "22px",
+    },
+
+    details: {
+      fontSize: "10px",
     },
   },
 });
