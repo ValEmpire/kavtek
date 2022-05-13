@@ -3,7 +3,6 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import { useUserDetails } from "./userDetailsHooks";
 import moment from "moment";
 import Confirm from "./Confirm";
-import { useSelector } from "react-redux";
 
 const UserReview = () => {
   const {

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -10,20 +10,67 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../redux/actions/user.action";
+import { getUsers, sortUserByBirthDay, sortUserByName } from "../../redux/actions/user.action";
 import moment from "moment";
+import {
+  SORT_BY_BIRTHDAY_ASC,
+  SORT_BY_NAME_ASC,
+  SORT_BY_NAME_DESC,
+  SORT_BY_BIRTHDAY_DESC,
+} from "../../const";
 
 const UsersRoute = () => {
   const dispatch = useDispatch();
 
+  // get users from store
   const { users } = useSelector((state) => state.user);
 
+  const [sortByName, setSortByName] = useState(SORT_BY_NAME_ASC);
+
+  const [sortByBirthDay, setSortByBirthDay] = useState(SORT_BY_BIRTHDAY_ASC);
+
+  // dispatch getUsers when component did mount
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
 
+  /**
+   *
+   * @param {*} email
+   * @returns truncated email from character @
+   */
   const truncateEmail = (email) => {
     return email.substr(0, email.indexOf("@") + 1) + "...";
+  };
+
+  /**
+   * void
+   * this will handle the arrow icon rendered
+   * this will also handle the dispatching of sorting by name
+   */
+  const handleSortByName = () => {
+    if (sortByName === SORT_BY_NAME_ASC) {
+      setSortByName(SORT_BY_NAME_DESC);
+    } else {
+      setSortByName(SORT_BY_NAME_ASC);
+    }
+
+    dispatch(sortUserByName(sortByName));
+  };
+
+  /**
+   * void
+   * this will handle the arrow icon rendered
+   * this will also handle the dispatching of sorting by birthday
+   */
+  const handleSortByBirthday = () => {
+    if (sortByBirthDay === SORT_BY_BIRTHDAY_ASC) {
+      setSortByBirthDay(SORT_BY_BIRTHDAY_DESC);
+    } else {
+      setSortByBirthDay(SORT_BY_BIRTHDAY_ASC);
+    }
+
+    dispatch(sortUserByBirthDay(sortByBirthDay));
   };
 
   return (
@@ -38,14 +85,28 @@ const UsersRoute = () => {
             <TableHead>
               <TableRow>
                 <TableCell className="w-100 p-20">
-                  <TableSortLabel active IconComponent={KeyboardArrowUpIcon}>
+                  <TableSortLabel
+                    onClick={handleSortByName}
+                    active
+                    IconComponent={
+                      sortByName === SORT_BY_NAME_DESC ? KeyboardArrowUpIcon : KeyboardArrowDownIcon
+                    }
+                  >
                     <Typography sx={{ mt: "-4px" }} variant="body2" color="text.secondary">
                       Name
                     </Typography>
                   </TableSortLabel>
                 </TableCell>
                 <TableCell className="w-100 p-20">
-                  <TableSortLabel active IconComponent={KeyboardArrowUpIcon}>
+                  <TableSortLabel
+                    onClick={handleSortByBirthday}
+                    active
+                    IconComponent={
+                      sortByBirthDay === SORT_BY_BIRTHDAY_DESC
+                        ? KeyboardArrowUpIcon
+                        : KeyboardArrowDownIcon
+                    }
+                  >
                     <Typography sx={{ mt: "-4px" }} variant="body2" color="text.secondary">
                       DOB
                     </Typography>

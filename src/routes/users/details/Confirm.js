@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Button, Modal, Typography } from "@mui/material";
 
+// this will make the modal centered with white bg
 const style = {
   position: "absolute",
   top: "50%",
@@ -14,6 +15,7 @@ const style = {
 };
 
 const Confirm = (props) => {
+  // passed props from UserReview
   const { openModal, handleModal, handleSuccess } = props;
 
   return (

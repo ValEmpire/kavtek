@@ -17,8 +17,6 @@ const getUsers = () => async (dispatch) => {
 };
 
 const getUserByEmail = (email) => async (dispatch) => {
-  console.log("getting user");
-
   try {
     return dispatch({
       type: SET_USER_DETAILS,
@@ -40,4 +38,23 @@ const resetActiveUser = () => (dispatch) => {
   });
 };
 
-export { getUsers, resetActiveUser, getUserByEmail, updateActiveUser };
+const sortUserByName = (sortBy) => (dispatch) => {
+  return dispatch({
+    type: sortBy,
+  });
+};
+
+const sortUserByBirthDay = (sortBy) => (dispatch) => {
+  return dispatch({
+    type: sortBy,
+  });
+};
+
+export {
+  getUsers,
+  resetActiveUser,
+  getUserByEmail,
+  updateActiveUser,
+  sortUserByName,
+  sortUserByBirthDay,
+};
